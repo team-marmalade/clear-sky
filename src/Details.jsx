@@ -2,12 +2,13 @@ import React from "react";
 
 const Details = () => {
   return (
-    <div id="details">
       <details >
         <summary>Location</summary>
+        <p>Something small enough to escape casual notice.
         Something small enough to escape casual notice.
+        Something small enough to escape casual notice.
+        </p>
       </details>
-    </div>
   );
 };
 
