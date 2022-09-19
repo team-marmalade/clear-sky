@@ -50,12 +50,7 @@ useEffect(() => {
   };
 
   return (
-
-    <div>
-      
-
       <form >
-
       <input
           type="text"
           id="name"
