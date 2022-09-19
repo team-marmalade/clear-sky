@@ -1,0 +1,49 @@
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(66, 167, 204, 0.805);
+  color: whitesmoke;
+  width: 100%;
+}
+
+header .logo h3 {
+  font-size: 30px;
+}
+
+
+form input {
+  padding: 1rem;
+  border-radius: 20px;
+  max-width: 230px;
+  font-family: var(--text-font);
+  border: 1px solid var(--sj-black);
+  font-size: var(--body-font-size);
+  margin: 8px 0;
+  text-align:center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: hsla(247, 37%, 52%, 0.776);
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  font-size: 15px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+#details {
+  margin: 16px 0;
+}
