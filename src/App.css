@@ -147,6 +147,14 @@ details table {
   width: 100%;
 }
 
+/* Clear Button */
+.clear-button {
+  cursor: pointer;
+}
+.clear-button:hover {
+  background-color: #f87171;
+}
+
 /* footer */
 footer {
   margin-top: auto;
