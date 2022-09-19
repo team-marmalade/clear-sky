@@ -30,6 +30,9 @@ function App() {
             nickname={listing.nickname}
             aqi={listing.aqi}
             data={listing.data}
+            index={index}
+            setListings={setListings}
+            listings={listings}
           />
         ))}
        {listings.length > 0 && <ClearButton clearListings={clearListings} />}
