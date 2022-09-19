@@ -5,7 +5,7 @@ const Details = ({nickname, data}) => {
       <details >
         <summary>{nickname}</summary>
         <p>
-          {data}
+          {data.co}
         </p>
       </details>
   );

@@ -7,13 +7,19 @@ import PlacesAutocomplete, {
 
 const Form = (props) => {
   const [gmapsLoaded, setGmapsLoaded] = useState(false);
+
+  // CONTROLLED INPUT
   const [address, setAddress] = useState("");
+
+  // INPUT DATA
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null,
   });
   const [nickName, setNickName] = useState("");
-
+  const [data, setData] = useState({});
+  
+  // SET NEW LISTING 
   const [newListing, setNewListing] = useState({
     nickname: "",
     lat: 0,
@@ -21,17 +27,16 @@ const Form = (props) => {
     data: {}
   });
   // const [listings, setListings] = useState([]);
-
-  
   
   useEffect(() => {
     setNewListing({
       nickname: nickName,
       lat: coordinates.lat,
       lng: coordinates.lng,
+      data: data
     });
     console.log(coordinates);
-  }, [coordinates]);
+  }, [data]);
 
   useEffect(() => {
     console.log(newListing);
@@ -65,12 +70,7 @@ const Form = (props) => {
     const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=7f710f4ac49c5d9196540b2aca98f9ca`)
     const data = await response.json()
     console.log(data.list[0].components)
-    setNewListing(prev => {
-      return({
-        ...prev,
-        data: data.list[0].components
-      })
-    })
+    setData(data.list[0].components)
   };
 
   return (

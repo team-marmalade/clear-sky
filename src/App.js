@@ -7,7 +7,7 @@ import Footer from "./Footer";
 
 function App() {
   const [listings, setListings] = useState([]);
-
+  
   return (
     <div className="App">
       <Header />
