@@ -87,6 +87,20 @@ details summary {
 }
 
 
+details.red-light summary::after {
+  content: "🔴";
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+details.yellow-light summary::after {
+  content: "🟡";
+}
+
+details.green-light summary::after {
+  content: "🟢";
+}
+
 details summary::before {
   content: "+";
   position: absolute;
