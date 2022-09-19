@@ -53,6 +53,12 @@ button {
   border-radius: 20px;
 }
 
+.autocomplete-dropdown-container{
+  color: grey;
+  font-size: 12px;
+  width: 200px;
+}
+
 /* details */
 details p {
   border-radius: 10px;
