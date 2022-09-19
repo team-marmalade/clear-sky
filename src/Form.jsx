@@ -18,9 +18,12 @@ const Form = (props) => {
     nickname: "",
     lat: 0,
     lng: 0,
+    data: {}
   });
   // const [listings, setListings] = useState([]);
 
+  
+  
   useEffect(() => {
     setNewListing({
       nickname: nickName,
@@ -59,6 +62,15 @@ const Form = (props) => {
     setAddress(value);
     setCoordinates(latlng);
     setAddress("");
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=7f710f4ac49c5d9196540b2aca98f9ca`)
+    const data = await response.json()
+    console.log(data.list[0].components)
+    setNewListing(prev => {
+      return({
+        ...prev,
+        data: data.list[0].components
+      })
+    })
   };
 
   return (
