@@ -1,9 +1,9 @@
 import React from "react";
 
-const Details = () => {
+const Details = ({nickname}) => {
   return (
       <details >
-        <summary>Location</summary>
+        <summary>{nickname}</summary>
         <p>Something small enough to escape casual notice.
         Something small enough to escape casual notice.
         Something small enough to escape casual notice.

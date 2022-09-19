@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-const Form = () => {
+const Form = (props) => {
   const [gmapsLoaded, setGmapsLoaded] = useState(false);
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({
@@ -19,7 +19,7 @@ const Form = () => {
     lat: 0,
     lng: 0,
   });
-  const [listings, setListings] = useState([]);
+  // const [listings, setListings] = useState([]);
 
   useEffect(() => {
     setNewListing({
@@ -32,12 +32,13 @@ const Form = () => {
 
   useEffect(() => {
     console.log(newListing);
-    nickName && coordinates.lat && coordinates.lng && setListings([...listings, newListing])
+    nickName && coordinates.lat && coordinates.lng && props.setListings([...props.listings, newListing])
+    setNickName('')
   }, [newListing]);
   
-  useEffect(() => {
-    console.log(listings);
-  }, [listings])
+  // useEffect(() => {
+  //   console.log(listings);
+  // }, [listings])
 
   useEffect(() => {
     if (!document.getElementById("gmapScript")) {
@@ -117,9 +118,6 @@ const Form = () => {
           )}
         </PlacesAutocomplete>
       )}
-      <div>
-        <button type="submit">Add</button>
-      </div>
     </form>
   );
 };
