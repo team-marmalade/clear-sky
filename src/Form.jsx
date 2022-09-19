@@ -32,7 +32,7 @@ const Form = () => {
 
   useEffect(() => {
     console.log(newListing);
-    setListings([...listings, newListing])
+    nickName && coordinates.lat && coordinates.lng && setListings([...listings, newListing])
   }, [newListing]);
   
   useEffect(() => {
@@ -92,7 +92,7 @@ const Form = () => {
               />
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
-                {suggestions.map((suggestion) => {
+                {suggestions.map((suggestion, index) => {
                   const className = suggestion.active
                     ? "suggestion-item--active"
                     : "suggestion-item";
@@ -102,6 +102,7 @@ const Form = () => {
                     : { backgroundColor: "#ffffff", cursor: "pointer" };
                   return (
                     <div
+                      key={index}
                       {...getSuggestionItemProps(suggestion, {
                         className,
                         style,
