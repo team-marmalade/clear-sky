@@ -13,7 +13,7 @@ header .logo h3 {
 }
 
 main {
-  width: 80%;
+  width: 65%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -60,8 +60,15 @@ button {
 }
 
 /* details */
+details {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 details p {
   border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   margin: 0;
   padding: 20px;
   border-top: none;
@@ -93,11 +100,15 @@ details[open] summary::before {
   transform: rotate(45deg);
 }
 
+details[open] summary{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 details[open] p {
   color: rgb(37, 33, 33);
   background-color: rgb(216, 229, 239);
 }
-
 
 /* footer */
 footer {
