@@ -121,16 +121,19 @@ details.green-light summary::after {
 
 details summary::before {
   transition: 0.5s;
-  content: "+";
-  font-size: 25px;
+  content: "";
   position: absolute;
   transform: rotate(0deg);
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  background-image: url('./expand.svg');
   right: 20px;
-  top: calc(50% - 15px);
+  top: calc(50% - 10px);
 }
 
 details[open] summary::before {
-  transform: rotate(45deg);
+  transform: rotate(-180deg);
 }
 
 details[open] summary{
