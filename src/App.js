@@ -13,7 +13,7 @@ function App() {
       <Header />
       <main>
         <Form setListings={setListings} listings={listings}/>
-        {listings.map((item) => <Details nickname={item.nickname}/>)}
+        {listings.map((listing, index) => <Details key={index} nickname={listing.nickname} data={listing.data}/>)}
       </main>
       <Footer />
     </div>

@@ -1,12 +1,11 @@
 import React from "react";
 
-const Details = ({nickname}) => {
+const Details = ({nickname, data}) => {
   return (
       <details >
         <summary>{nickname}</summary>
-        <p>Something small enough to escape casual notice.
-        Something small enough to escape casual notice.
-        Something small enough to escape casual notice.
+        <p>
+          {data}
         </p>
       </details>
   );
