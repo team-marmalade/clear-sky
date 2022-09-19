@@ -62,7 +62,7 @@ const Form = (props) => {
       const gmapScript = document.createElement("script");
       gmapScript.setAttribute("id", "gmapScript");
       gmapScript.src =
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCCOWBSRAcv39PP5qELdUjpj6iFqEtDIgc&libraries=places&callback=initMap";
+        `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&libraries=places&callback=initMap`;
       document
         .querySelector("body")
         .insertAdjacentElement("beforeend", gmapScript);
@@ -75,7 +75,7 @@ const Form = (props) => {
     setAddress(value);
     setCoordinates(latlng);
     setAddress("");
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=7f710f4ac49c5d9196540b2aca98f9ca`)
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
     const data = await response.json()
     console.log(data.list[0].components)
     console.log("whole list")
