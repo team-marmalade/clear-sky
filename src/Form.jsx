@@ -6,13 +6,13 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 const Form = () => {
-  const [gmapsLoaded, setGmapsLoaded] = useState(false)
+  const [gmapsLoaded, setGmapsLoaded] = useState(false);
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null,
   });
-  const [nickName, setNickName] = useState("")
+  const [nickName, setNickName] = useState("");
 
   const [newListing, setNewListing] = useState({
     nickname: "",
@@ -21,25 +21,36 @@ const Form = () => {
   });
   const [listings, setListings] = useState([]);
 
-useEffect(() => {
-  setNewListing({nickname: nickName, lat: coordinates.lat, lng: coordinates.lng})
-  console.log(coordinates);
-}, [coordinates])
+  useEffect(() => {
+    setNewListing({
+      nickname: nickName,
+      lat: coordinates.lat,
+      lng: coordinates.lng,
+    });
+    console.log(coordinates);
+  }, [coordinates]);
 
-useEffect(() => {
-  // setListings([])
-  console.log(newListing);
-}, [newListing])
+  useEffect(() => {
+    console.log(newListing);
+    setListings([...listings, newListing])
+  }, [newListing]);
+  
+  useEffect(() => {
+    console.log(listings);
+  }, [listings])
 
-useEffect(() => {
-  if(!document.getElementById("gmapScript")){
-    window.initMap = () => setGmapsLoaded(true)
-    const gmapScript = document.createElement("script")
-    gmapScript.setAttribute("id", "gmapScript")
-    gmapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCCOWBSRAcv39PP5qELdUjpj6iFqEtDIgc&libraries=places&callback=initMap"
-    document.querySelector("body").insertAdjacentElement("beforeend", gmapScript)
-  } 
-},[])
+  useEffect(() => {
+    if (!document.getElementById("gmapScript")) {
+      window.initMap = () => setGmapsLoaded(true);
+      const gmapScript = document.createElement("script");
+      gmapScript.setAttribute("id", "gmapScript");
+      gmapScript.src =
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCCOWBSRAcv39PP5qELdUjpj6iFqEtDIgc&libraries=places&callback=initMap";
+      document
+        .querySelector("body")
+        .insertAdjacentElement("beforeend", gmapScript);
+    }
+  }, []);
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
@@ -50,22 +61,18 @@ useEffect(() => {
   };
 
   return (
-
-    <div>
-      
-
-      <form >
-
+    <form>
       <input
-          type="text"
-          id="name"
-          name="nickName"
-          placeholder="Your nickname..."
-          value={nickName}
-          onChange={(e) => setNickName(e.target.value)}
-        />
+        type="text"
+        id="name"
+        name="nickName"
+        placeholder="Your nickname..."
+        value={nickName}
+        onChange={(e) => setNickName(e.target.value)}
+      />
 
-        {gmapsLoaded && (<PlacesAutocomplete
+      {gmapsLoaded && (
+        <PlacesAutocomplete
           value={address}
           onChange={setAddress}
           onSelect={handleSelect}
@@ -91,7 +98,7 @@ useEffect(() => {
                     : "suggestion-item";
                   // inline style for demonstration purpose
                   const style = suggestion.active
-                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                    ? { backgroundColor: "#fafafa", cursor: "pointer", color: "blue" }
                     : { backgroundColor: "#ffffff", cursor: "pointer" };
                   return (
                     <div
@@ -107,11 +114,12 @@ useEffect(() => {
               </div>
             </div>
           )}
-        </PlacesAutocomplete>)}
-        <div>
-          <button type="submit">Add</button>
-        </div>
-      </form>
+        </PlacesAutocomplete>
+      )}
+      <div>
+        <button type="submit">Add</button>
+      </div>
+    </form>
   );
 };
 
