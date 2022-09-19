@@ -5,39 +5,48 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-const Form = () => {
+const Form = (props) => {
   const [gmapsLoaded, setGmapsLoaded] = useState(false);
+
+  // CONTROLLED INPUT
   const [address, setAddress] = useState("");
+
+  // INPUT DATA
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null,
   });
   const [nickName, setNickName] = useState("");
-
+  const [data, setData] = useState({});
+  
+  // SET NEW LISTING 
   const [newListing, setNewListing] = useState({
     nickname: "",
     lat: 0,
     lng: 0,
+    data: {}
   });
-  const [listings, setListings] = useState([]);
-
+  // const [listings, setListings] = useState([]);
+  
   useEffect(() => {
     setNewListing({
       nickname: nickName,
       lat: coordinates.lat,
       lng: coordinates.lng,
+      data: data
     });
     console.log(coordinates);
-  }, [coordinates]);
+  }, [data]);
 
   useEffect(() => {
     console.log(newListing);
-    nickName && coordinates.lat && coordinates.lng && setListings([...listings, newListing])
+    nickName && coordinates.lat && coordinates.lng && props.setListings([...props.listings, newListing])
+    setNickName('')
   }, [newListing]);
   
-  useEffect(() => {
-    console.log(listings);
-  }, [listings])
+  // useEffect(() => {
+  //   console.log(listings);
+  // }, [listings])
 
   useEffect(() => {
     if (!document.getElementById("gmapScript")) {
@@ -58,6 +67,10 @@ const Form = () => {
     setAddress(value);
     setCoordinates(latlng);
     setAddress("");
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=7f710f4ac49c5d9196540b2aca98f9ca`)
+    const data = await response.json()
+    console.log(data.list[0].components)
+    setData(data.list[0].components)
   };
 
   return (
@@ -117,9 +130,6 @@ const Form = () => {
           )}
         </PlacesAutocomplete>
       )}
-      <div>
-        <button type="submit">Add</button>
-      </div>
     </form>
   );
 };

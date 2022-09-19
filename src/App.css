@@ -37,6 +37,8 @@ form input {
   text-align:center;
 }
 
+
+
 button {
   background-color: hsla(247, 37%, 52%, 0.776);
   border: none;
@@ -85,6 +87,21 @@ details summary {
   font-size: 20px;
 }
 
+
+details.red-light summary::after {
+  content: "🔴";
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+details.yellow-light summary::after {
+  content: "🟡";
+}
+
+details.green-light summary::after {
+  content: "🟢";
+}
+
 details summary::before {
   content: "+";
   position: absolute;
@@ -119,6 +136,7 @@ footer {
   color: rgb(33, 34, 34);
   width: 100%;
 }
+
 
 
 
