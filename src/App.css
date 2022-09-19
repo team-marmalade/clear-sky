@@ -8,12 +8,22 @@ header {
   width: 100%;
 }
 
+html, body, #root, .App {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
 header .logo h3 {
   font-size: 30px;
 }
 
 main {
   width: 65%;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -37,8 +47,6 @@ form input {
   text-align:center;
 }
 
-
-
 button {
   background-color: hsla(247, 37%, 52%, 0.776);
   border: none;
@@ -61,12 +69,11 @@ button {
 
 /* details */
 details {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 
-details p {
+details div {
   border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -90,25 +97,36 @@ details summary {
 
 details.red-light summary::after {
   content: "🔴";
-  margin-left: 20px;
   font-size: 12px;
+  right: 50px;
+  position: absolute;
+  top: calc(50% - 6px);
 }
 
 details.yellow-light summary::after {
   content: "🟡";
+  font-size: 12px;
+  right: 50px;
+  position: absolute;
+  top: calc(50% - 6px);
 }
 
 details.green-light summary::after {
   content: "🟢";
+  font-size: 12px;
+  right: 50px;
+  position: absolute;
+  top: calc(50% - 6px);
 }
 
 details summary::before {
+  transition: 0.5s;
   content: "+";
+  font-size: 25px;
   position: absolute;
-  width: 25px;
-  height: 25px;
   transform: rotate(0deg);
   right: 20px;
+  top: calc(50% - 15px);
 }
 
 details[open] summary::before {
@@ -120,14 +138,19 @@ details[open] summary{
   border-bottom-right-radius: 0;
 }
 
-details[open] p {
+details[open] div {
   color: rgb(37, 33, 33);
   background-color: rgb(216, 229, 239);
 }
 
+details table {
+  width: 100%;
+}
+
 /* footer */
 footer {
-  height: 90px;
+  margin-top: auto;
+  min-height: 90px;
   font-size: 12px;
   display: flex;
   justify-content: space-around;
@@ -136,7 +159,3 @@ footer {
   color: rgb(33, 34, 34);
   width: 100%;
 }
-
-
-
-
