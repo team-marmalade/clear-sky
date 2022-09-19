@@ -50,9 +50,13 @@ useEffect(() => {
   };
 
   return (
+
     <div>
-      <form>
-        <input
+      
+
+      <form >
+
+      <input
           type="text"
           id="name"
           name="nickName"
@@ -108,7 +112,6 @@ useEffect(() => {
           <button type="submit">Add</button>
         </div>
       </form>
-    </div>
   );
 };
 
