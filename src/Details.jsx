@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 
-const Details = ({nickname, data, aqi}) => {
+const Details = ({nickname, data, aqi, setListings, listings, index}) => {
   let lightColor = ""
+
+  useEffect(() => {
+
+  })
 
   if (aqi < 3)
     lightColor = 'green-light'
@@ -9,6 +13,13 @@ const Details = ({nickname, data, aqi}) => {
     lightColor = 'yellow-light'
   } else {
     lightColor = 'red-light'
+  }
+
+  const handleDelete = () => {
+    listings.splice(index, 1);
+    const newList = JSON.stringify(listings)
+    localStorage.setItem('listings', newList)
+    localStorage.getItem('listings') && setListings(JSON.parse(localStorage.getItem('listings')))
   }
 
   return (
@@ -43,6 +54,7 @@ const Details = ({nickname, data, aqi}) => {
               </tr>
             </tbody>
           </table>
+          <button onClick={handleDelete}>Remove</button>
         </div>
       </details>
   );
