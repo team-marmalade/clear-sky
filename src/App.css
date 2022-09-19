@@ -63,6 +63,7 @@ details {
   margin-bottom: 50px;
 }
 
+
 details p {
   border-radius: 10px;
   border-top-left-radius: 0;
@@ -83,7 +84,6 @@ details summary {
   list-style: none;
   font-size: 20px;
 }
-
 
 details summary::before {
   content: "+";
