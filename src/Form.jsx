@@ -17,6 +17,7 @@ const Form = (props) => {
     lng: null,
   });
   const [nickName, setNickName] = useState("");
+  const [aqi, setAqi] = useState(0);
   const [data, setData] = useState({});
   
   // SET NEW LISTING 
@@ -24,7 +25,8 @@ const Form = (props) => {
     nickname: "",
     lat: 0,
     lng: 0,
-    data: {}
+    aqi: 0,
+    data: {},
   });
   // const [listings, setListings] = useState([]);
   
@@ -33,15 +35,21 @@ const Form = (props) => {
       nickname: nickName,
       lat: coordinates.lat,
       lng: coordinates.lng,
-      data: data
+      aqi: aqi,
+      data: data,
     });
     console.log(coordinates);
   }, [data]);
 
   useEffect(() => {
     console.log(newListing);
-    nickName && coordinates.lat && coordinates.lng && props.setListings([...props.listings, newListing])
-    setNickName('')
+    if (nickName && coordinates.lat && coordinates.lng) { 
+      props.setListings([...props.listings, newListing])
+      const list = localStorage.getItem("listings") ? JSON.parse(localStorage.getItem("listings")) : [];
+      const newList = JSON.stringify([...list, newListing])
+      localStorage.setItem('listings', newList)
+      setNickName('')
+    }
   }, [newListing]);
   
   // useEffect(() => {
@@ -70,6 +78,9 @@ const Form = (props) => {
     const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=7f710f4ac49c5d9196540b2aca98f9ca`)
     const data = await response.json()
     console.log(data.list[0].components)
+    console.log("whole list")
+    console.log(data.list)
+    setAqi(data.list[0].main.aqi)
     setData(data.list[0].components)
   };
 
