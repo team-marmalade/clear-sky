@@ -51,6 +51,11 @@ form input {
   margin: 15px 0;
   text-align:center;
 }
+.google-input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 button {
   background-color: hsla(247, 37%, 52%, 0.776);
