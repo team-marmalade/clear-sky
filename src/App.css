@@ -1,4 +1,5 @@
 /* header */
+
 header {
   display: flex;
   justify-content: space-around;
@@ -6,6 +7,10 @@ header {
   background-color: rgba(66, 167, 204, 0.805);
   color: whitesmoke;
   width: 100%;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 html, body, #root, .App {
@@ -155,25 +160,63 @@ details[open] summary{
 details[open] div {
   color: rgb(37, 33, 33);
   background-color: rgb(216, 229, 239);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-link {
+  align-self: start;
+  margin: 10px 0;
 }
 
 details table {
   width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: content-box;
+  border-spacing: 0;
 }
 
 /* Clear Button */
 .clear-button {
   cursor: pointer;
+  margin: 0;
 }
 .clear-button:hover {
   background-color: #f87171;
+}
+
+.row-label {
+  text-decoration: underline;
+  font-weight: bold;
+  padding: 0;
+}
+
+details button {
+  align-self: end;
+}
+
+details a {
+  font-size: 12px;
+}
+
+details p {
+  align-self: start;
+  margin: 20px 0;
+}
+
+.emojis {
+  align-self: start;
+  margin-bottom: 20px; 
 }
 
 /* footer */
 footer {
   margin-top: auto;
   min-height: 90px;
-  font-size: 12px;
+  font-size: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -181,3 +224,4 @@ footer {
   color: rgb(33, 34, 34);
   width: 100%;
 }
+
