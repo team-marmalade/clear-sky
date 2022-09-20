@@ -107,7 +107,7 @@ const Form = (props) => {
             getSuggestionItemProps,
             loading,
           }) => (
-            <div>
+            <div className="google-input-div">
               <input
                 {...getInputProps({
                   placeholder: "Search Places ...",
