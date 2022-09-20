@@ -92,31 +92,42 @@ details summary {
   color: white;
   list-style: none;
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
 
 details.red-light summary::after {
-  content: "🔴";
+  content: "";
+  background-color: red;
+  border-radius: 50%;
   font-size: 12px;
   right: 50px;
   position: absolute;
-  top: calc(50% - 6px);
+  width: 20px;
+  height: 20px;
 }
 
 details.yellow-light summary::after {
-  content: "🟡";
+  content: "";
+  background-color: yellow;
+  border-radius: 50%;
   font-size: 12px;
   right: 50px;
   position: absolute;
-  top: calc(50% - 6px);
+  width: 20px;
+  height: 20px;
 }
 
 details.green-light summary::after {
-  content: "🟢";
+  content: "";
+  background-color: #22c55e;
+  border-radius: 50%;
   font-size: 12px;
   right: 50px;
   position: absolute;
-  top: calc(50% - 6px);
+  width: 20px;
+  height: 20px;
 }
 
 details summary::before {
