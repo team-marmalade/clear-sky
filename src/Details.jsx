@@ -54,7 +54,7 @@ const Details = ({nickname, data, aqi, setListings, listings, index}) => {
               </tr>
             </tbody>
           </table>
-          <button onClick={handleDelete}>Remove</button>
+          <button onClick={handleDelete} className="clear-button">Remove</button>
         </div>
       </details>
   );

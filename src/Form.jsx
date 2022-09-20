@@ -75,7 +75,7 @@ const Form = (props) => {
     setAddress(value);
     setCoordinates(latlng);
     setAddress("");
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${latlng.lat}&lon=${latlng.lng}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}`)
     const data = await response.json()
     console.log(data.list[0].components)
     console.log("whole list")
