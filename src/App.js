@@ -19,6 +19,12 @@ function App() {
     setListings([]);
   };
 
+
+  // const removeItem = (id) => {
+  //   setListings(listings.filter((item) => item.id !== id));
+  // };
+
+
   return (
     <div className="App">
       <Header />
