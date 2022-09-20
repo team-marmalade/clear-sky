@@ -165,8 +165,14 @@ details table {
 .clear-button {
   cursor: pointer;
 }
+
 .clear-button:hover {
   background-color: #f87171;
+}
+
+/* hide marker on safari */
+details summary::-webkit-details-marker {
+  display:none;
 }
 
 /* footer */
@@ -180,4 +186,8 @@ footer {
   background-color: rgba(240, 240, 240, 0.805);
   color: rgb(33, 34, 34);
   width: 100%;
+}
+
+main button {
+  margin-bottom: 50px;
 }
