@@ -6,4 +6,4 @@ ClearSky is a web app for displaying real-time air quality information. It allow
 
 Air quality is one of the biggest silent killers, and we hope that this app might help those with respiratory conditions living in high-risk areas.
 
-Find out more info about how Air Quality affects your health [here](https://www.health.act.gov.au/about-our-health-system/population-health/environmental-monitoring/air-quality-health-advice-portal)
+Find out more info about how air quality affects your health [here](https://www.health.act.gov.au/about-our-health-system/population-health/environmental-monitoring/air-quality-health-advice-portal)
