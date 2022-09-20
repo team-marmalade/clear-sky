@@ -1,3 +1,11 @@
+:root {  
+  --border-color: #70c3e4 transparent transparent transparent;
+}
+
+
+* {
+  box-sizing: border-box;
+}
 /* header */
 
 header {
@@ -27,8 +35,8 @@ header .logo h3 {
 }
 
 main {
-  width: 65%;
-  max-width: 500px;
+  width: 80%;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -51,6 +59,7 @@ form input {
   margin: 15px 0;
   text-align:center;
 }
+
 .google-input-div {
   display: flex;
   flex-direction: column;
@@ -73,8 +82,16 @@ button {
 
 .autocomplete-dropdown-container{
   color: grey;
-  font-size: 12px;
+  font-size: 15px;
   width: 200px;
+}
+
+.suggestion-item {
+  margin: 10px 0;
+}
+
+.suggestion-item--active {
+  margin: 10px 0;
 }
 
 /* details */
@@ -97,47 +114,16 @@ details div {
 details summary {
   border-radius: 10px;
   position: relative;
-  padding: 20px;
+  padding: 15px 20px 15px 40px;
   background-color: rgb(59, 122, 160);
   color: white;
   list-style: none;
   font-size: 20px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-
-details.red-light summary::after {
-  content: "";
-  background-color: red;
-  border-radius: 50%;
-  font-size: 12px;
-  right: 50px;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-}
-
-details.yellow-light summary::after {
-  content: "";
-  background-color: yellow;
-  border-radius: 50%;
-  font-size: 12px;
-  right: 50px;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-}
-
-details.green-light summary::after {
-  content: "";
-  background-color: #22c55e;
-  border-radius: 50%;
-  font-size: 12px;
-  right: 50px;
-  position: absolute;
-  width: 20px;
-  height: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 details summary::before {
@@ -149,7 +135,7 @@ details summary::before {
   height: 20px;
   background-size: cover;
   background-image: url('./expand.svg');
-  right: 20px;
+  left: 10px;
   top: calc(50% - 10px);
 }
 
@@ -162,7 +148,7 @@ details[open] summary{
   border-bottom-right-radius: 0;
 }
 
-details[open] div {
+details[open] div.details-content {
   color: rgb(37, 33, 33);
   background-color: rgb(216, 229, 239);
   display: flex;
@@ -205,8 +191,20 @@ details summary::-webkit-details-marker {
   padding: 0;
 }
 
-details button {
+.delete-button {
   align-self: end;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  padding: 10px;
+  background-color: transparent;
+  background-image: url("./delete.svg");
+  background-size: cover;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-image: url("./delete-selected.svg");
 }
 
 details a {
@@ -236,7 +234,105 @@ footer {
   width: 100%;
 }
 
-main button {
-  margin-bottom: 50px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+  transform: rotate(360deg);
+    }
 }
 
+.spinner-wrapper {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  margin: 10px auto;
+}
+
+.spinner-wrapper > div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-sizing: border-box;
+  border-color: var(--border-color);
+  animation: spin 1s infinite;
+  opacity: 0.6;
+}
+
+
+.spinner-wrapper div:nth-of-type(2) {
+  animation-duration: 0.9s;
+  opacity: 0.5;
+}
+
+.spinner-wrapper div:nth-of-type(3) {
+  animation: spin 1.2s infinite;
+  opacity: 0.3;
+}
+
+.spinner-wrapper div:nth-of-type(4) {
+  animation: spin 1.2s infinite;
+  opacity: 0.2;
+}
+
+.details-icon {
+  padding: 0px;
+  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position:center;
+  background-color: white;
+}
+
+.details-icon.face.happy {
+  background-image: url('./happy.svg');
+  border: 2px solid lightgreen;
+  background-size: cover;
+}
+
+.details-icon.face.sad {
+  background-image: url('./sad.svg');
+  border: 2px solid #f87171;
+  background-size: cover;
+}
+
+.details-icon.face.neutral {
+  background-image: url('./neutral.svg');
+  border: 2px solid yellow;
+  background-size: cover;
+}
+
+.details-icon.advice.outdoors {
+  background-image: url('./outdoors.svg');
+}
+
+.details-icon.advice.indoors {
+  background-image: url('./indoors.svg');
+}
+
+.details-icon.activity.active {
+  background-image: url('./active.svg');
+}
+
+.details-icon.activity.sit {
+  background-image: url('./sit.svg');
+}
+
+.details-icon.activity.mask {
+  background-size: cover;
+  background-image: url('./mask.svg');
+}
+
+.icons-wrap {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}

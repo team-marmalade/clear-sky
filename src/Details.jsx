@@ -3,7 +3,10 @@ import React, { useEffect } from "react";
 const Details = ({nickname, data, aqi, setListings, listings, index}) => {
   let lightColor = ""
   let message = "No change needed to your normal outdoor activities."
-  let emojis = ""
+  let face = ''
+  let advice = ''
+  let air = ''
+  let activity = ''
 
   useEffect(() => {
 
@@ -12,15 +15,21 @@ const Details = ({nickname, data, aqi, setListings, listings, index}) => {
   if (aqi < 3) {
     lightColor = 'green-light';
     message = 'No change needed to your normal outdoor activities.';
-    emojis = "😄 🏞️" 
+    face ='happy'
+    advice ='outdoors'
+    activity = 'active'
   } else if (aqi < 5){
     lightColor = 'yellow-light';
     message = 'Reduce outdoor physical activity if you develop symptoms like cough or shortness of breath. Consider closing windows and doors until outdoor air quality is better.';
-    emojis = "😑 🪟"
+    face = 'neutral'
+    advice = 'outdoors'
+    activity = 'sit'
   } else {
     lightColor = 'red-light';
     message = 'Stay indoors as much as possible with windows and doors closed until outdoor air quality is better.';
-    emojis = '😷 🏠 🛑';
+    face = 'sad'
+    advice = 'indoors'
+    activity = 'mask'
   }
 
   const handleDelete = () => {
@@ -32,9 +41,15 @@ const Details = ({nickname, data, aqi, setListings, listings, index}) => {
 
   return (
       <details className={lightColor}>
-        <summary>{nickname}</summary>
-        <div>
-          <span className="emojis">{emojis}</span>
+        <summary>
+          {nickname}
+          <div class="icons-wrap">
+            <div className={`details-icon face ${face}`}></div>
+            <div className={`details-icon advice ${advice}`}></div>
+            <div className={`details-icon activity ${activity}`}></div>
+          </div>
+        </summary>
+        <div className="detailsContent">
           <table>
             <tbody>
               <tr>
@@ -65,7 +80,7 @@ const Details = ({nickname, data, aqi, setListings, listings, index}) => {
           </table>
           <a target="blank" className="details-link" href="https://en.wikipedia.org/wiki/Air_quality_index#CAQI">What does this mean?</a>
           <p>{message}</p>
-          <button onClick={handleDelete} className="clear-button">Remove</button>
+          <button onClick={handleDelete} className="delete-button"></button>
         </div>
       </details>
   );

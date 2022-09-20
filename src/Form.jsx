@@ -19,7 +19,7 @@ const Form = (props) => {
   const [nickName, setNickName] = useState("");
   const [aqi, setAqi] = useState(0);
   const [data, setData] = useState({});
-  
+
   // SET NEW LISTING 
   const [newListing, setNewListing] = useState({
     nickname: "",
@@ -29,7 +29,7 @@ const Form = (props) => {
     data: {},
   });
   // const [listings, setListings] = useState([]);
-  
+
   useEffect(() => {
     setNewListing({
       nickname: nickName,
@@ -43,7 +43,7 @@ const Form = (props) => {
 
   useEffect(() => {
     console.log(newListing);
-    if (nickName && coordinates.lat && coordinates.lng) { 
+    if (nickName && coordinates.lat && coordinates.lng) {
       props.setListings([...props.listings, newListing])
       const list = localStorage.getItem("listings") ? JSON.parse(localStorage.getItem("listings")) : [];
       const newList = JSON.stringify([...list, newListing])
@@ -51,7 +51,7 @@ const Form = (props) => {
       setNickName('')
     }
   }, [newListing]);
-  
+
   // useEffect(() => {
   //   console.log(listings);
   // }, [listings])
@@ -90,7 +90,7 @@ const Form = (props) => {
         type="text"
         id="name"
         name="nickName"
-        placeholder="Your nickname..."
+        placeholder="Label (e.g.Home) ..."
         value={nickName}
         onChange={(e) => setNickName(e.target.value)}
       />
@@ -110,12 +110,18 @@ const Form = (props) => {
             <div className="google-input-div">
               <input
                 {...getInputProps({
-                  placeholder: "Search Places ...",
+                  placeholder: "Search Locations ...",
                   className: "location-search-input",
                 })}
               />
               <div className="autocomplete-dropdown-container">
-                {loading && <div>Loading...</div>}
+                {loading && <div class="spinner-wrapper">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>}
+                {(suggestions.length > 1) && <span>Select a location:</span>}
                 {suggestions.map((suggestion, index) => {
                   const className = suggestion.active
                     ? "suggestion-item--active"
