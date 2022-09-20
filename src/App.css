@@ -9,6 +9,10 @@ header {
   width: 100%;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 html, body, #root, .App {
   height: 100%;
 }
